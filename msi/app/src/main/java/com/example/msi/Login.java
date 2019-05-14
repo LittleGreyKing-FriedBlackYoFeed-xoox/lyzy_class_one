@@ -37,9 +37,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         //监听登录按钮
         login = (Button)findViewById(R.id.login);
         login.setOnClickListener(this);
-
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){

@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 public class Index extends AppCompatActivity implements View.OnClickListener{
+
+    //引入工具类
+    private MyDatabaseHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,10 +24,19 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
         //跳转登录界面
         Button goto_login = (Button)findViewById(R.id.goto_login);
         goto_login.setOnClickListener(this);
+        //监听点击按钮事件
+        Button create_database = (Button)findViewById(R.id.create_database);
+        create_database.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.create_database:
+                //指定需要创建的数据库
+                dbHelper = new MyDatabaseHelper(this,"BookStore.db",null,1);
+                //进行建库操作
+                dbHelper.getWritableDatabase();
+                break;
             case R.id.goto_login:
                 Intent i = new Intent(Index.this,Login.class);
                 startActivity(i);
