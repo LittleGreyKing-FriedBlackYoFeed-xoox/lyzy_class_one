@@ -27,13 +27,20 @@ public class Index extends AppCompatActivity implements View.OnClickListener{
         //监听点击按钮事件
         Button create_database = (Button)findViewById(R.id.create_database);
         create_database.setOnClickListener(this);
+        //添加书目
+        Button add_shu = (Button)findViewById(R.id.add_shu);
+        add_shu.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.add_shu:
+                Intent k = new Intent(Index.this,OptionsDatabase.class);
+                startActivity(k);
+                break;
             case R.id.create_database:
                 //指定需要创建的数据库
-                dbHelper = new MyDatabaseHelper(this,"BookStore.db",null,1);
+                dbHelper = new MyDatabaseHelper(this,"BookStore.db",null,3);
                 //进行建库操作
                 dbHelper.getWritableDatabase();
                 break;

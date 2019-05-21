@@ -11,6 +11,19 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             "price real," +
             "pages integer," +
             "name text)";
+
+    /**
+     * 创建书目表
+     */
+    public static final String create_shu = "create table shu(" +
+            "id integer primary key autoincrement," +
+            "name text," +
+            "c text," +
+            "price real," +
+            "pages integer," +
+            "writer text)";
+
+
     private Context mContext;
     /**
      * 构造函数
@@ -31,10 +44,20 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         //创建数据库
         //execute执行SQL语句
         db.execSQL(CREATE_TABLE);
+        db.execSQL(create_shu);
         Toast.makeText(mContext,"create database successed!",Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * 更新数据库
+     * @param db--需要更新的数据库
+     * @param oldVersion--旧版本
+     * @param newVersion--新版本
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("drop table if exists Book");
+        db.execSQL("drop table if exists shu");
+        onCreate(db);
     }
 }

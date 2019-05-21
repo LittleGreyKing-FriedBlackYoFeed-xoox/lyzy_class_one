@@ -28,4 +28,10 @@
         android:layout_height="wrap_content"
         android:text="点击创建数据库"/>
 
+    <Button
+        android:id="@+id/add_shu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点击添加书目"/>
+
 </LinearLayout>
